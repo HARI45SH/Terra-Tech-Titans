@@ -1,12 +1,13 @@
 ## Team Terra Tech Titans
 
-## PS: Ministry of denfence: TO find the Terrain (terrain Detection)
-
+## PS: Ministry of defence: TO find the Terrain (terrain Detection)
+## PS Number: SIH1418
+## Domain Bucket: Miscellaneous
 ## Team Members
 
-### 1 abishek
-### 2 akshaya
-### 3 jayasri
-### 4 manikandan
-### 5 sree harish
-### 6 madhava prasath
+### 1 Abishek
+### 2 Akshaya
+### 3 Jayasri
+### 4 Manikandan
+### 5 Sree Harish
+### 6 Madhava prasath
