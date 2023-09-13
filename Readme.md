@@ -1,6 +1,6 @@
 ## Team Terra Tech Titans
 
-## PS: Ministry of defence: To find the Terrain (Terrain Detection)
+## PS: Ministry of Defence: To find the Terrain (Terrain Detection)
 ## PS Number: SIH1418
 ## Domain Bucket: Miscellaneous
 ## Team Members
