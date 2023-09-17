@@ -48,7 +48,13 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-
+.card img{
+    width: 180px;
+    height: 180px;
+    box-sizing: border-box;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
 .card h3 {
     font-weight: 500;
     font-size: 30px;
