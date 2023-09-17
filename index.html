@@ -8,16 +8,27 @@
 </head>
 
 <body>
-    <div class="hero">
-        <div class="card">
-            <h1>Terrain recognition</h1>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <img src="upload.png" id="previewImage">
-                <label for="imageInput">Upload</label>
-                <input type="file" accept="image/jpeg, image/png, image/jpg" name="file" id="imageInput">
-                <input type="submit" value="Upload">
-            </form>
+
+    <div class="main">
+        <div class="card card:hover border-secondary mb-8 rounded"
+            style="width: 22rem; height: 25rem; padding-bottom: 30%;  ">
+            <div class="title" style="font-size:10vw">
+                <h3>Terrain Recognition </h3>
+            </div>
+            <div class="panel">
+                <input id="file-upload" class="hidden" type="file"
+                    accept="image/x-png,image/gif,image/jpeg,image/jpg" />
+                <label for="file-upload" id="file-drag" class="upload-box">
+                    <div id="upload-caption">Drop image here or click to select</div>
+                    <img id="image-preview" class="hidden" />
+                </label>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <input type="button" value="Submit" class="button" onclick="submitImage();" />
+                <input type="button" value="Clear" class="button" onclick="clearImage();" />
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
