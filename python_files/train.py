@@ -22,7 +22,7 @@ from PIL import Image
 from tqdm import tqdm
 from torch.utils.data.sampler import SubsetRandomSampler,WeightedRandomSampler
 
-from model import Mobilenet_reg,extractor_model
+from python_files.model import Mobilenet_reg,extractor_model
 random.seed(42)
 
 print(os.listdir('Dataset/'))
