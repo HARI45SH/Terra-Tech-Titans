@@ -1,11 +1,19 @@
 from flask import Flask, render_template, request, jsonify
-import pickle
+from torchvision import transforms
+from PIL import Image
+import torch
 
 app = Flask(__name__)
 
-# Load your machine learning model
-with open('model.pkl', 'rb') as model_file:
-    model = pickle.load(model_file)
+# Load your Deep Learning model
+model = torch.load('model.pth')
+model.eval()  # Set the model to evaluation mode
+
+# Define a transformation to preprocess the image
+
+
+# Define a function to preprocess the image
+
 
 @app.route('/')
 def index():
@@ -13,10 +21,21 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    image = request.json
-    # Preprocess the image if necessary
-    prediction = model.predict(image)  # Replace with your actual prediction code
-    return jsonify({'result': str(prediction)})
+    image_file = request.files['file']
+    if image_file:
+        image = Image.open(image_file)
+        input_image = preprocess_image(image)
+        
+        with torch.no_grad():
+            output = model(input_image)
+        
+        # Process the output based on your model's architecture
+        # For example, if it's a classification model, you might do:
+        _, predicted_class = torch.max(output, 1)
+        class_names = ['asphalt', 'bricks']  # Replace with your class names
+        prediction = class_names[predicted_class]
+        
+        return jsonify({'result': prediction})
 
 if __name__ == '__main__':
     app.run(debug=True)
