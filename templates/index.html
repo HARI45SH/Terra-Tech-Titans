@@ -164,9 +164,9 @@
       </div>
 
       <div class="answers">
-        <p>Slipperiness: <span id="slipperinessValue"></span></p>
-        <p>Roughness: <span id="roughnessValue"></span></p>
-      </div>
+        <p>Slipperiness: <span id="slipperinessValue">{{ slipperiness }}</span></p>
+        <p>Roughness: <span id="roughnessValue">{{ roughness }}</span></p>
+    </div>
     </div>
   </div>
 
@@ -199,6 +199,10 @@
       previewImage.src = '';
       previewImage.style.display = 'none';
       dropZoneText.style.display = 'block';
+      document.getElementById('predictedCard').style.display = 'none'; // Hide the predicted card
+      document.getElementById('uploadCard').style.display = 'block'; // Show the upload card
+      document.getElementById('slipperinessValue').textContent = ''; // Clear slipperiness value
+      document.getElementById('roughnessValue').textContent = ''; // Clear roughness value
     }
 
     function uploadImage() {
@@ -213,7 +217,13 @@
             predictedImageElement.src = uploadedImage.src;
             predictedImageElement.style.display = 'block';
             document.getElementById('predictedCard').style.display = 'block';
-            dropZoneText.style.display = 'none'; // Hide the instructional text
+            dropZoneText.style.display = 'none'; // 
+
+            /*//delete the code
+            const slipperiness = 0.75; // Example value, replace with actual prediction
+            const roughness = 0.85; // Example value, replace with actual prediction
+            document.getElementById('slipperinessValue').textContent = slipperiness.toFixed(2); // Update slipperiness value
+            document.getElementById('roughnessValue').textContent = roughness.toFixed(2); // Update roughness value  //*/
           }
         }
         reader.readAsDataURL(file);
