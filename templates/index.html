@@ -164,14 +164,12 @@
       <div class="predicted-image">
         <img id="predictedImage" src="" alt="Predicted Image">
       </div>
-
       <div class="answers">
-        <p>Slipperiness: <span id="slipperinessValue">{{ slipperiness }}</span></p>
-        <p>Roughness: <span id="roughnessValue">{{ roughness }}</span></p>
-    </div>
+        <p>Slipperiness: <span id="slipperinessValue">{{ slip }}</span></p>
+        <p>Roughness: <span id="roughnessValue">{{ rough }}</span></p>
     </div>
   </div>
-
+</div>
   <script>
     const dropZoneText = document.getElementById('dropZoneText');
     const dropZone = document.getElementById('dropZone');
@@ -238,9 +236,14 @@
           method: 'POST',
           body: formData
         })
-          .then(response => response.text())
-          .then(message => alert(message))
-          .catch(error => console.error('Error:', error));
+        .then(response => response.json()) // Assuming your server returns JSON data
+        .then(data => {
+            const slipperinessValue = document.getElementById('slipperinessValue');
+            const roughnessValue = document.getElementById('roughnessValue');
+            slipperinessValue.textContent = data.Slipperiness;
+            roughnessValue.textContent = data.Roughness;
+        })
+        .catch(error => console.error('Error:', error));
       } else {
         alert('Please select an image to upload.');
       }
