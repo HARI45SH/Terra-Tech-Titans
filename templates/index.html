@@ -190,7 +190,7 @@
         reader.onload = () => {
           previewImage.src = reader.result;
           previewImage.style.display = 'block';
-          document.getElementById('dropZoneText').style.display = 'block'; 
+          document.getElementById('dropZoneText').style.display = 'none'; 
         }
         reader.readAsDataURL(file);
       }
