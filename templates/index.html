@@ -166,13 +166,14 @@
       </div>
 
       <div class="answers">
-        <p>Slipperiness: <span id="slipperinessValue">{{ slipperiness }}</span></p>
-        <p>Roughness: <span id="roughnessValue">{{ roughness }}</span></p>
+        <p>Slipperiness: <span id="slipperinessValue :">{{ slip }}</span></p>
+        <p>Roughness: <span id="roughnessValue :">{{ rough }}</span></p>
     </div>
     </div>
   </div>
 
   <script>
+
     const dropZoneText = document.getElementById('dropZoneText');
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
@@ -189,7 +190,7 @@
         reader.onload = () => {
           previewImage.src = reader.result;
           previewImage.style.display = 'block';
-          document.getElementById('dropZoneText').style.display = 'none'; // Hide the instructional text
+          document.getElementById('dropZoneText').style.display = 'block'; 
         }
         reader.readAsDataURL(file);
       }
@@ -218,7 +219,7 @@
             const predictedImageElement = document.getElementById('predictedImage');
             predictedImageElement.src = uploadedImage.src;
             predictedImageElement.style.display = 'block';
-            document.getElementById('predictedCard').style.display = 'block';
+            document.getElementById('predictedCard').style.display ='block';
             dropZoneText.style.display = 'none'; // 
 
             /*//delete the code
@@ -231,16 +232,28 @@
         reader.readAsDataURL(file);
       }
       if (fileInput.files.length > 0) {
+        console.log('JavaScript code is executing.');
         const formData = new FormData();
         formData.append('file', fileInput.files[0]);
 
         fetch('/upload', {
-          method: 'POST',
-          body: formData
-        })
-          .then(response => response.text())
-          .then(message => alert(message))
-          .catch(error => console.error('Error:', error));
+  method: 'POST',
+  body: formData
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data); // Log the entire response
+  window.addEventListener('load', function () {
+  const slipperinessValue = document.getElementById('slipperinessValue');
+  const roughnessValue = document.getElementById('roughnessValue');
+  
+  slipperinessValue.textContent = data.Slipperiness;
+  roughnessValue.textContent = data.Roughness;
+  });
+})
+
+.catch(error => console.error('Error:', error));
+
       } else {
         alert('Please select an image to upload.');
       }
@@ -252,6 +265,7 @@
       previewImage.style.display = 'none';
       dropZoneText.style.display = 'block'; // Show the instructional text
     }
+   
   </script>
 </body>
 
