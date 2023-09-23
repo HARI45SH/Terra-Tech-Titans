@@ -475,6 +475,30 @@
             dropZone.addEventListener('click', () => {
                 fileInput.click();
             });
+    <div class="card">
+      <h2>Data Prediction</h2>
+      <div class="predicted-image">
+        <img id="predictedImage" src="" alt="Predicted Image">
+      </div>
+
+      <div class="answers">
+        <p>Slipperiness: <span id="slipperinessValue :">{{ slip }}</span></p>
+        <p>Roughness: <span id="roughnessValue :">{{ rough }}</span></p>
+    </div>
+    </div>
+  </div>
+
+  <script>
+
+    const dropZoneText = document.getElementById('dropZoneText');
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const previewImage = document.getElementById('previewImage');
+    
+
+    dropZone.addEventListener('click', () => {
+      fileInput.click();
+    });
 
             fileInput.addEventListener('change', () => {
                 const file = fileInput.files[0];
