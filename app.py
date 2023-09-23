@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from flask import Flask, render_template, request,session,redirect,url_for,jsonify,flash
 import torch
 from PIL import Image
 import os
@@ -8,7 +7,6 @@ from io import BytesIO
 from torchvision import transforms
 
 app = Flask(__name__)
-app.secret_key="mani is my best friend"
 
 
 
@@ -45,12 +43,6 @@ def upload_file():
         cl,slip,rough=model(tensor)
         print(cl,slip,rough)
         return jsonify({'predictions': cl, 'Roughness': str(round(rough,2)), 'Slipperiness': str(round(slip,2))})
-        #cl_pr,cl_index,slip,rough=model(tensor)
-        slip,rough=model(tensor)
-        return render_template('index.html', slip=slip, rough=rough)
-    #return jsonify({'Slipperiness': slip , 'Roughness': rough,'Class': cl_index,'Class Probability': cl_pr})
-    #return jsonify({'Slipperiness': slip , 'Roughness': rough})
-    return flash("Something went wrong")
 
 
 if __name__ == '__main__':
