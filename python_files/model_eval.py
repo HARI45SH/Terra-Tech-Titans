@@ -12,5 +12,7 @@ class Load_model():
     def __call__(self,image):
         class_pred,slip_rough=self.model(image)
         slip,rough=slip_rough[0][0].item(),slip_rough[0][1].item()
-
-        return class_pred.argmax(dim=1).item(),slip,rough
+        #class_pred=nn.Softmax(dim=1)(class_pred)
+        #argmax=torch.topk(class_pred,self.k,dim=1)
+        #return argmax.values,argmx.indices,slip,rough
+        return slip,rough

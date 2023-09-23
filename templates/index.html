@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Terrain Recognition</title>
+  <title>Terrain Recognitionclear</title>
   <link rel="icon" href="data:,">
   <style>
     * {
@@ -178,6 +178,7 @@
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const previewImage = document.getElementById('previewImage');
+    
 
     dropZone.addEventListener('click', () => {
       fileInput.click();
@@ -219,7 +220,7 @@
             const predictedImageElement = document.getElementById('predictedImage');
             predictedImageElement.src = uploadedImage.src;
             predictedImageElement.style.display = 'block';
-            document.getElementById('predictedCard').style.display ='inline';
+            document.getElementById('predictedCard').style.display ='block';
             dropZoneText.style.display = 'none'; // 
 
             /*//delete the code
@@ -240,19 +241,14 @@
   method: 'POST',
   body: formData
 })
-.then(response => response.json())
-.then(data => {
-  console.log(data); // Log the entire response
-  window.addEventListener('load', function () {
-  const slipperinessValue = document.getElementById('slipperinessValue');
-  const roughnessValue = document.getElementById('roughnessValue');
-  
-  slipperinessValue.textContent = data.Slipperiness;
-  roughnessValue.textContent = data.Roughness;
-  });
-})
-
-.catch(error => console.error('Error:', error));
+.then(response => response.json()) // Assuming your server returns JSON data
+        .then(data => {
+            const slipperinessValue = document.getElementById('slipperinessValue');
+            const roughnessValue = document.getElementById('roughnessValue');
+            slipperinessValue.textContent = data.Slipperiness;
+            roughnessValue.textContent = data.Roughness;
+        })
+        .catch(error => console.error('Error:', error));
 
       } else {
         alert('Please select an image to upload.');
